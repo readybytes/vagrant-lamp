@@ -29,34 +29,34 @@ execute "make-ssl-cert" do
 end
 
 # Initialize sites data bag
-sites = []
-begin
-  sites = data_bag("sites")
-rescue
-  puts "Sites data bag is empty"
-end
+#sites = []
+#begin
+#  sites = data_bag("sites")
+#rescue
+#  puts "Sites data bag is empty"
+#end
 
 # Configure sites
-sites.each do |name|
-  site = data_bag_item("sites", name)
-
-  # Add site to apache config
-  web_app site["host"] do
-    template "sites.conf.erb"
-    server_name site["host"]
-    server_aliases site["aliases"]
-    docroot site["docroot"]?site["docroot"]:"/vagrant/public/#{site["host"]}"
-  end  
-
-   # Add site info in /etc/hosts
-   bash "hosts" do
-     code "echo 127.0.0.1 #{site["host"]} #{site["aliases"].join(' ')} >> /etc/hosts"
-   end
-end
+#sites.each do |name|
+#  site = data_bag_item("sites", name)
+#
+#  # Add site to apache config
+#  web_app site["host"] do
+#    template "sites.conf.erb"
+#    server_name site["host"]
+#    server_aliases site["aliases"]
+#    docroot site["docroot"]? site["docroot"]: "/var/www/#{site["host"]}"
+#  end  
+#
+#   # Add site info in /etc/hosts
+#   bash "hosts" do
+#     code "echo 127.0.0.1 #{site["host"]} #{site["aliases"].join(' ')} >> /etc/hosts"
+#   end
+#end
 
 # Disable default site
 apache_site "default" do
-  enable false  
+  enable true  
 end
 
 # Install phpmyadmin
@@ -108,6 +108,11 @@ package "php5-curl" do
   action :install
 end
 
+#install pdftk (merge pdf)
+bash "pdftk-install" do
+  code "sudo apt-get install pdftk"
+end
+
 # Get eth1 ip
 eth1_ip = node[:network][:interfaces][:eth1][:addresses].select{|key,val| val[:family] == 'inet'}.flatten[0]
 
@@ -140,7 +145,7 @@ end
 apt_repository "percona" do
   uri "http://repo.percona.com/apt"
   components ["main"]
-  distribution "lucid"
+  distribution "precise"
 end
 bash "apt-get-update" do
   code "sudo apt-get update"
