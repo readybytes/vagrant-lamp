@@ -22,13 +22,15 @@ Download a vagrant box (name of the box is supposed to be precise64)
 Folder setup:
 ---------------
     
-* Store vagrant boxes at 
-    `/vobs/vagrant/`
+Store vagrant boxes at 
+
+    $ /vobs/vagrant/
     
-* Create shared folder for Code & Database
-    `/vobs/shared/code`
-    `/vobs/shared/db`
-    `/vobs/shared/cache/pear/cache   (to hold pear upate cache)`
+Create shared folder for Code & Database
+
+    $ /vobs/shared/code
+    $ /vobs/shared/db
+    $ /vobs/shared/cache/pear/cache   (to hold pear upate cache)
 
 Installation:
 -------------
@@ -77,9 +79,13 @@ Now you can access websites as
 ### phpMyAdmin
 
 phpMyAdmin is available on every domain. For example:
+
     `http://localhost:8080/phpmyadmin`
+    
     `User : root`
+    
     `Password : root`
+    
     
     
 ### XDebug and webgrind
