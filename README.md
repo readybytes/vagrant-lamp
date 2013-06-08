@@ -23,16 +23,12 @@ Folder setup:
 ---------------
     
 * Store vagrant boxes at 
-
-    /vobs/vagrant/
+    `/vobs/vagrant/`
     
 * Create shared folder for Code & Database
-    
-    /vobs/shared/code
-
-    /vobs/shared/db 
-    
-    /vobs/shared/cache/pear/cache   (to hold pear upate cache)
+    `/vobs/shared/code`
+    `/vobs/shared/db`
+    `/vobs/shared/cache/pear/cache   (to hold pear upate cache)`
 
 Installation:
 -------------
