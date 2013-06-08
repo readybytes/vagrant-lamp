@@ -9,7 +9,8 @@ Pre-Setup:
 
 Install [vagrant](http://vagrantup.com/)
 
-    $ gem install vagrant
+    Download http://10.0.0.91/intranet/downloads/vagrant/vagrant_1.2.2_x86_64.deb
+    Install it via Ubuntu Software Center
 
 Download and Install [VirtualBox](http://www.virtualbox.org/)
 
