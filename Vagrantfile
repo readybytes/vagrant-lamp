@@ -6,7 +6,7 @@ Vagrant::Config.run do |config|
   config.vm.box = "precise64"
 
   # Uncomment these lines to give the virtual machine more memory and "dual core cpu"
-  config.vm.customize ["modifyvm", :id, "--memory", 512]
+  config.vm.customize ["modifyvm", :id, "--memory", 1024]
   config.vm.customize ["modifyvm", :id, "--cpus", 1]
 
   # Forward MySql port on 33066, used for connecting admin-clients to localhost:33066

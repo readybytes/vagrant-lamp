@@ -136,6 +136,36 @@ bash "deploy" do
   notifies :restart, resources("service[apache2]"), :delayed
 end
 
+# Upgrade PEAR
+execute "sudo pear upgrade PEAR ; sudo pear config-set auto_discover 1; sudo pear -V > /tmp/pear/cache/version;" do
+  not_if "cat /tmp/pear/cache/version | grep -i 'pear'"
+end
+
+
+# Install Phing
+channel = "pear.phing.info"
+execute "pear channel-discover #{channel}" do
+  not_if "pear list-channels | grep #{channel}"
+end
+
+execute "pear install phing/phing" do
+  not_if "pear list -c phing | grep '^phing '"
+end
+
+
+# Install PHPQA Tools
+include_recipe "php"
+
+channel = "pear.phing.info"
+execute "pear channel-discover #{channel}" do
+  not_if "pear list-channels | grep #{channel}"
+end
+
+execute "pear install pear.phpqatools.org/phpqatools" do
+  not_if "pear list -c phpunit | grep -i '^PHPUnit '"
+end
+
+
 # Install Percona Toolkit
 bash "percona-key" do
   # Install percona repo key. 
