@@ -17,6 +17,10 @@ Vagrant::Config.run do |config|
   config.vm.share_folder("shared-code", "/var/www", 	    "/vobs/shared/code", 		:extra => 'dmode=777,fmode=666')
   config.vm.share_folder("shared-db",   "/var/lib/mysql",   "/vobs/shared/db",			:extra => 'dmode=777,fmode=666')
   config.vm.share_folder("cache-pear",  "/tmp/pear/cache",  "/vobs/shared/cache/pear/cache",	:extra => 'dmode=777,fmode=666')
+
+  # Reuse Repos
+  config.vm.share_folder("shared-repos",  "/vobs",  	    "/vobs/repo",			:extra => 'dmode=777,fmode=666')
+
   # enable it by executing this command
   # ln -s -T ~/Dropbox /vobs/shared/dropbox
   config.vm.share_folder("shared-dropbox",  "/home/vagrant/Dropbox",  "/vobs/shared/dropbox",	:extra => 'dmode=777,fmode=666')
