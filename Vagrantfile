@@ -4,6 +4,7 @@
 Vagrant::Config.run do |config|
   # Set box configuration
   config.vm.box = "precise64"
+  config.vm.box_url = "http://10.0.0.91/intranet/downloads/vagrant/boxes/precise64.box"
 
   # Uncomment these lines to give the virtual machine more memory and "dual core cpu"
   config.vm.customize ["modifyvm", :id, "--memory", 1024]

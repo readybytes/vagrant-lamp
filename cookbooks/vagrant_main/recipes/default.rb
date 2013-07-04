@@ -109,9 +109,9 @@ package "php5-curl" do
 end
 
 #install pdftk (merge pdf)
-bash "pdftk-install" do
-  code "sudo apt-get install pdftk"
-end
+#bash "pdftk-install" do
+#  code "sudo apt-get install pdftk"
+#end
 
 # Get eth1 ip
 eth1_ip = node[:network][:interfaces][:eth1][:addresses].select{|key,val| val[:family] == 'inet'}.flatten[0]
